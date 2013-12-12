@@ -283,6 +283,22 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(badblocks_src_files)
 LOCAL_C_INCLUDES := $(badblocks_c_includes)
 LOCAL_CFLAGS := $(badblocks_cflags)
+LOCAL_STATIC_LIBRARIES := $(badblocks_shared_libraries) $(badblocks_system_shared_libraries)
+LOCAL_MODULE := recovery_badblocks
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES
+LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+LOCAL_UNSTRIPPED_PATH := $(PRODUCT_OUT)/symbols/recovery
+LOCAL_MODULE_STEM := badblocks
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+
+include $(BUILD_EXECUTABLE)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := $(badblocks_src_files)
+LOCAL_C_INCLUDES := $(badblocks_c_includes)
+LOCAL_CFLAGS := $(badblocks_cflags)
 LOCAL_SHARED_LIBRARIES := $(addsuffix _host, $(badblocks_shared_libraries))
 LOCAL_MODULE := badblocks_host
 LOCAL_MODULE_STEM := badblocks
